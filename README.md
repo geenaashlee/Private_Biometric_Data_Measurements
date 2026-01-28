@@ -1,12 +1,11 @@
-# Privacy-First Body Measurement Extraction
+# Privacy First Body Measurement Extraction
 
-**A demonstration that biometric data processing doesn't require centralization**
+**A demonstration that biometric data processing without centralization**
 
 ## Overview
 
-This project addresses a critical gap in privacy-preserving technologies: most virtual try-on and body measurement systems require uploading full-body video to centralized servers. This prototype demonstrates that body measurements can be extracted **entirely on the user's device**, proving that centralized biometric collection is an architectural choice, not a technical necessity.
+Most virtual try-on and body measurement systems require uploading full-body video to centralized servers. This prototype demonstrates that body measurements can be extracted on the user's advice,therefore proving that centralized biometric collection can be an architectural choice
 
-**Key Privacy Principle:** Your body never leaves your device.
 
 ## The Problem
 
@@ -15,71 +14,27 @@ Current virtual try-on technologies in fashion and AR/VR require users to:
 2. Trust that biometric data is handled appropriately
 3. Accept that compliance frameworks (SOC2, HIPAA) audit *how* data is handled, not *whether* it should be collected at all
 
-This creates unnecessary privacy risks. If measurements can be extracted locally, why centralize sensitive biometric data?
 
 ## This Solution
 
-This application demonstrates **local-first biometric processing**:
+This application demonstrates local-first biometric processing:
 
-- ✅ All video processing happens on your device
-- ✅ Pose detection runs locally using MediaPipe
-- ✅ Only final measurements (numbers) are stored
-- ✅ Video frames are **never** saved or transmitted
-- ✅ Zero server communication required
+-  Video processing happens on your device
+- Pose detection runs locally using MediaPipe
+- Only final measurements (numbers) are stored
+- Video frames are never saved and zero server communication 
 
-### Privacy Architecture Comparison
-
-| Approach | Data Transmitted | Privacy Risk |
-|----------|------------------|--------------|
-| **Traditional centralized** | 1,800 video frames/minute (30fps) | High - full biometric stream exposed |
-# Privacy-First Body Measurement Extraction
-
-**A demonstration that biometric data processing doesn't require centralization**
-
-## Overview
-
-This project addresses a critical gap in privacy-preserving technologies: most virtual try-on and body measurement systems require uploading full-body video to centralized servers. This prototype demonstrates that body measurements can be extracted **entirely on the user's device**, proving that centralized biometric collection is an architectural choice, not a technical necessity.
-
-**Key Privacy Principle:** Your body never leaves your device.
-
-## The Problem
-
-Current virtual try-on technologies in fashion and AR/VR require users to:
-1. Upload continuous video streams of their bodies to company servers
-2. Trust that biometric data is handled appropriately
-3. Accept that compliance frameworks (SOC2, HIPAA) audit *how* data is handled, not *whether* it should be collected at all
-
-This creates unnecessary privacy risks. If measurements can be extracted locally, why centralize sensitive biometric data?
-
-## This Solution
-
-This application demonstrates **local-first biometric processing**:
-
-- ✅ All video processing happens on your device
-- ✅ Pose detection runs locally using MediaPipe
-- ✅ Only final measurements (numbers) are stored
-- ✅ Video frames are **never** saved or transmitted
-- ✅ Zero server communication required
-
-### Privacy Architecture Comparison
-
-| Approach | Data Transmitted | Privacy Risk |
-|----------|------------------|--------------|
-| **Traditional centralized** | 1,800 video frames/minute (30fps) | High - full biometric stream exposed |
-| **This local approach** | ~10 measurements/session | Minimal - only derived statistics |
-| **Data reduction** | 99.9% less data | Fundamentally different threat model |
 
 ## Technical Implementation
-
-**Stack:**
+Stack:
 - Python 3.8+
 - OpenCV - webcam capture and display
 - MediaPipe Pose - local pose estimation
 - NumPy - geometric calculations
 
-**Key Components:**
-1. `pose_detector.py` - Detects body landmarks from video frames
-2. `measurement_calculator.py` - Calculates measurements from landmark coordinates
+Key Components:
+1. `pose_detector.py` - Detecting body landmarks from video frames
+2. `measurement_calculator.py` - Calculating measurements from landmark coordinates
 3. `main.py` - Orchestrates local processing pipeline
 
 **What makes this privacy-preserving:**
@@ -151,42 +106,19 @@ This is a **proof-of-concept** demonstrating feasibility, not a production syste
 
 ## Connection to Graduate Research
 
-This project is the foundation for my intended research in **privacy-preserving streaming biometric systems**. At graduate school, I plan to extend this work to:
+This project is the foundation for my intended research in **privacy-preserving streaming biometric systems**. 
+
+I plan to extend this work to:
 
 1. Implement **temporal differential privacy** for streaming pose data
 2. Explore **secure enclave processing** for cryptographic guarantees
 3. Develop **streaming federated learning** architectures for model updates without centralization
 4. Build production-ready systems that can process 30fps biometric streams with formal privacy guarantees
 
-This prototype demonstrates I understand:
-- The biometric processing pipeline
-- Why local processing matters for privacy
-- The gap between current solutions and what's needed
-- How to build working systems, not just theoretical models
-
-## Why This Matters
-
-**For Fashion (my background with BÁJ):** Virtual try-on should democratize access to proper sizing without requiring surveillance of users' bodies.
-
-**For Healthcare:** Remote patient monitoring shouldn't require streaming unencrypted biometric data to cloud providers.
-
-**For AR/VR:** Immersive experiences shouldn't come at the cost of permanent biometric data collection.
-
-**Broader Principle:** Privacy engineering isn't just about compliance—it's about building systems where surveillance is **architecturally unnecessary**, not just procedurally restricted.
-
-## Contributing
-
-This is a learning project and portfolio piece for graduate school applications. Suggestions and improvements welcome via issues or pull requests.
-
-## License
-
-MIT License - feel free to use this code for educational purposes.
-
-## Contact
 
 Geena Greene  
-[GitHub](https://github.com/geenaashlee) | [LinkedIn](https://linkedin.com/in/yourprofile)
+[GitHub](https://github.com/geenaashlee) | [LinkedIn](https://www.linkedin.com/in/geena-greene/)
 
 ---
 
-**Note to Reviewers:** This project demonstrates my commitment to building privacy-preserving systems and my understanding of the gap between operational security and true privacy protection. The limitations section honestly acknowledges what I don't yet know—which is why I'm pursuing graduate studies in Privacy Engineering.
+**Note to Reviewers:** This project demonstrates my commitment to building privacy-preserving systems and my understanding of the gap between operational security and true privacy protection. The limitations section honestly acknowledges what I don't yet know. Suggestions and improvements are welcome via issues or pull requests.
