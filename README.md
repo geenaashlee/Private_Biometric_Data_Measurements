@@ -2,22 +2,13 @@
 
 **A demonstration that biometric data processing without centralization**
 
-## Overview
-
-Most virtual try-on and body measurement systems require uploading full-body video to centralized servers. This prototype demonstrates that body measurements can be extracted on the user's advice,therefore proving that centralized biometric collection can be an architectural choice
-
-
-## The Problem
-
-Current virtual try-on technologies in fashion and AR/VR require users to:
+## The Problem: Current virtual try-on technologies in fashion and AR/VR require users to:
 1. Upload continuous video streams of their bodies to company servers
 2. Trust that biometric data is handled appropriately
 3. Accept that compliance frameworks (SOC2, HIPAA) audit *how* data is handled, not *whether* it should be collected at all
 
 
-## This Solution
-
-This application demonstrates local-first biometric processing:
+## This Solution:
 
 -  Video processing happens on your device
 - Pose detection runs locally using MediaPipe
