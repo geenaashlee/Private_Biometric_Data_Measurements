@@ -2,7 +2,8 @@
 
 **A demonstration that biometric data processing without centralization**
 
-## The Problem: Current virtual try-on technologies in fashion and AR/VR require users to:
+## The Problem: 
+Current virtual try-on technologies in fashion and AR/VR require users to:
 1. Upload continuous video streams of their bodies to company servers
 2. Trust that biometric data is handled appropriately
 3. Accept that compliance frameworks (SOC2, HIPAA) audit *how* data is handled, not *whether* it should be collected at all
