@@ -1,13 +1,11 @@
 # Calculate body measurements from pose landmarks.
 
 import numpy as np
-from numpy.ma.core import left_shift
 
 from config import REFERENCE_HEIGHT_CM
 
 class MeasurementCalculator:
-   """Calculates body measurements from detected landmarks."""
-
+   # Calculates body measurements from detected landmarks.
    def __init__(self, user_height_cm=REFERENCE_HEIGHT_CM):
        """
        Initialize calculator with user's actual height for calibration.
@@ -18,9 +16,9 @@ class MeasurementCalculator:
        self.user_height_cm = user_height_cm
        self.pixels_per_cm = None
 
-    def calculate_distance(self, point1, point2):
+def calculate_distance(self, point1, point2):
         """
-        Calculate distace between two points.
+        Calculate distance between two points.
 
         Args:
            point1: (x, y) tuple
@@ -31,7 +29,7 @@ class MeasurementCalculator:
         """
         return np.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
 
-    def calibrate(self, landmarks):
+def calibrate(self, landmarks):
         """
         Calibrate pixel-to-cm ratio using detected body height.
 
@@ -48,7 +46,7 @@ class MeasurementCalculator:
 
         avg_ankle = (
             (left_ankle[0] + right_ankle[0] / 2,
-             (left_ankle[1] + right_ankle[1]) / 2)
+            (left_ankle[1] + right_ankle[1]) / 2)
         )
 
         body_height_pixels = self.calculate_distance(nose, avg_ankle)
@@ -58,12 +56,12 @@ class MeasurementCalculator:
             return True
         return False
 
-    def calculate_measurements(self, landmarks):
+def calculate_measurements(self, landmarks):
         """
         Calculate body measurements from landmarks.
 
         Args:
-        landmarks: Dictonary of landmark coordinates
+        landmarks: Dictionary of landmark coordinates
 
         Returns:
         dict: Dictionary of measurements in centimeters
@@ -82,7 +80,11 @@ class MeasurementCalculator:
 
         # Torso length (shoulder to hip)
         left_torso_px = self.calculate_distance(
-            landmarks['right_shoulder'],
+            landmarks['left_shoulder'], # Changed from 'right_shoulder'
+            landmarks['left_hip']       # Changed from 'right_hip'
+        )
+        right_torso_px = self.calculate_distance(
+            landmarks ['right_shoulder'],
             landmarks['right_hip']
         )
         avg_torso_px = (left_torso_px + right_torso_px) / 2

@@ -4,8 +4,8 @@ Body Measurement Extraction, Demonstrating data without centralization
 import cv2
 import time
 from datetime import datetime
-from pose_detector import PoseDetector
-from measurement_calculator import MeasurementCalculator
+from posing_detection import PoseDetector
+from measure_calculator import MeasurementCalculator
 from config import (
     CAMERA_INDEX, FRAME_WIDTH, FRAME_HEIGHT,
     SHOW_LANDMARKS, SAVE_FRAMES
@@ -45,7 +45,7 @@ def main ():
         if not cap.isOpened():
              print("Erro: Could not open camera.")
              return
-         print("\nCamera opened successfully!")
+        print("\nCamera opened successfully!")
         print("Stand in front of camera with full body visibility.")
         print("Press 'c' to calibrate,'m' to measure,'q' to 'quit.")
 
@@ -88,7 +88,7 @@ def main ():
             # Show frame
             cv2.imshow('Privacy-First Body Measurements', frame)
 
-           print("\n" + "=" * 60)
+        print("\n" + "=" * 60)
         print("PRIVACY SUMMARY:")
         print(f" Total frames processes: {frame_count}")
         print(f" Total frames saved: 0")
